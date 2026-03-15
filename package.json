@@ -1,0 +1,14 @@
+{
+  "name": "tawasol-backend",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.0",
+    "pg": "^8.11.0",
+    "@supabase/supabase-js": "^2.38.0"
+  }
+}
