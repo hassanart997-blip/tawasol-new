@@ -10,6 +10,7 @@
     { "src": "/api/posts", "dest": "/api/posts/index.js" },
     { "src": "/api/users/(.*)", "dest": "/api/users/[id].js" },
     { "src": "/api/(.*)", "dest": "/api/$1" },
-    { "src": "/(.*)", "dest": "/client/build/$1" }
+    { "src": "/static/(.*)", "dest": "/client/build/static/$1" },
+    { "src": "/(.*)", "dest": "/client/build/index.html" }
   ]
 }
