@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 module.exports = async (req, res) => {
-  const path = req.url.replace('/api/auth', '').split('?')[0];
+  const path = '/' + (req.url || '').split('?')[0].split('/').pop();
 
   if (path === '/register' && req.method === 'POST') {
     const { username, email, full_name, password } = req.body;
@@ -46,7 +46,7 @@ module.exports = async (req, res) => {
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       const result = await pool.query(
-        'SELECT id, username, email, full_name, bio, profile_picture FROM users WHERE id = $1',
+        'SELECT id, username, email, full_name, bio, avatar_url FROM users WHERE id = $1',
         [decoded.id]
       );
       if (!result.rows[0]) return res.status(404).json({ error: 'User not found' });
