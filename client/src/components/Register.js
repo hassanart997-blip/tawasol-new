@@ -28,7 +28,7 @@ const Register = () => {
       const loginRes = await login(form.email, form.password);
       if (loginRes.success) navigate('/feed');
     } catch (err) {
-      setError(err.response?.data?.error || 'حدث خطأ');
+      setError(err.response?.data?.message || err.response?.data?.error || 'حدث خطأ في التسجيل');
     } finally {
       setLoading(false);
     }
